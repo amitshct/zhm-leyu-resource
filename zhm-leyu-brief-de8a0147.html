@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专题 · 乐鱼体育 · 日常查询与资讯对照</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: #f4f6fb;
+            color: #1e2a3a;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        /* 深色头图 Hero */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+            color: #e3eaf0;
+            padding: 3.5rem 1.8rem 4.5rem 1.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -30%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 215, 100, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 1.2rem auto 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.88;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .tagline {
+            display: inline-block;
+            margin-top: 1.6rem;
+            background: #f0c75e;
+            color: #0b1a2e;
+            padding: 0.3rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 浅色正文区 */
+        .content-wrap {
+            max-width: 1100px;
+            margin: -2rem auto 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 8px 26px -8px rgba(0, 20, 30, 0.12);
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 30px -10px rgba(0, 20, 30, 0.18);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 550;
+            color: #132a3c;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #d4a045;
+            padding-left: 1rem;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 540;
+            color: #1e3c52;
+            margin-top: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0 0.6rem 0;
+        }
+        .feature-item {
+            background: #f0f3f9;
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8ef;
+            text-align: center;
+        }
+        .feature-item span {
+            display: block;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        a {
+            color: #1f6390;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover {
+            color: #be8a3a;
+            border-bottom: 1px solid #be8a3a;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #1f6390;
+            color: #1f6390;
+            padding: 0.4rem 1.4rem;
+            border-radius: 80px;
+            font-weight: 510;
+            font-size: 0.9rem;
+            transition: background 0.15s, color 0.15s;
+            text-decoration: none;
+            border-bottom: 1.5px solid #1f6390;
+        }
+        .btn-outline:hover {
+            background: #1f6390;
+            color: #ffffff;
+            border-bottom: 1.5px solid #1f6390;
+        }
+
+        .faq-mini {
+            background: #f7faff;
+            border-radius: 16px;
+            padding: 1.4rem 1.8rem;
+            margin: 1.6rem 0 0.2rem 0;
+            border-left: 6px solid #d4a045;
+        }
+        .faq-mini p {
+            margin-bottom: 0.8rem;
+        }
+        .faq-mini strong {
+            color: #132a3c;
+        }
+
+        /* 页尾访问提示 */
+        .footer-note {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            box-shadow: 0 6px 20px -8px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+            border: 1px solid #e5ebf2;
+        }
+        .footer-note p {
+            font-size: 1rem;
+            color: #324a5e;
+            margin-bottom: 1rem;
+        }
+
+        .footer-legal {
+            margin-top: 1.8rem;
+            font-size: 0.82rem;
+            color: #697b8b;
+            text-align: center;
+            padding: 1rem 0 2.5rem 0;
+            border-top: 1px solid #dbe0e8;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1.6rem 1.2rem;
+            }
+            .grid-features {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 400px) {
+            .grid-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>乐鱼体育 · 专题</h1>
+        <p>日常查询 · 对照 · 延伸阅读 —— 从信息密度到决策辅助，一个聚合维度。</p>
+        <span class="tagline">焦点 · 索引 · 简析</span>
+    </header>
+
+    <!-- 正文区：三段自然介绍 + 场景特点 -->
+    <div class="content-wrap">
+
+        <!-- 1. 背景说明：从日常查询切入 -->
+        <div class="card">
+            <h2>从查询到对照：信息梳理</h2>
+            <p>页面浏览、数据对照、赛事存档——这类高频动作往往需要稳定的信息锚点。围绕<a href="https://zhm-leyu.com.cn">乐鱼体育</a>所聚合的赛事摘要与分类索引，可以快速捕捉近期焦点，减少在多标签页间反复跳转的消耗。同时，将分段数据并置，便于做横向比对，尤其适合赛前参考或赛后复盘。</p>
+            <p>围绕基础信息流的组织方式，页面按项目、阶段、关键节点做了分层显示，在保持阅读节奏的同时，也留出了自主筛选的空间。对日常需要频繁查阅更新的人来说，这种结构降低了认知负荷。</p>
+        </div>
+
+        <!-- 2. 特点与具体场景：自然介绍+ grid卡片 -->
+        <div class="card">
+            <h2>常见使用场景与对照维度</h2>
+            <p>无论是快速浏览当前赛季的积分走势，还是回溯特定场次的统计摘要，简洁的对照表格和信息分层都能节省大量搜索时间。以下为几个典型的切入方向：</p>
+            <div class="grid-features">
+                <div class="feature-item"><span>📅</span> 近期赛程 · 时段预览</div>
+                <div class="feature-item"><span>📊</span> 积分/排名快照</div>
+                <div class="feature-item"><span>📋</span> 交手记录摘要</div>
+                <div class="feature-item"><span>🏷️</span> 项目分类索引</div>
+                <div class="feature-item"><span>🔁</span> 多维度对照视图</div>
+                <div class="feature-item"><span>📌</span> 关键节点高亮</div>
+            </div>
+            <p style="margin-top: 1.4rem;">这些模块在保持信息密度的同时，也适合用作个人分析时的快速参考源。以赛事列表为例，日期、对阵、阶段性结果并列显示，可直接进行横向评估，避免在原文和搜索引擎之间频繁切换。</p>
+        </div>
+
+        <!-- 3. 延伸阅读/FAQ摘要 + 专业性提示 -->
+        <div class="card">
+            <h2>延伸阅读 · 常见疑问摘要</h2>
+            <div class="faq-mini">
+                <p><strong>▶ 如何利用对照信息提升效率？</strong><br>
+                将不同分类的数据并置（例如主客场表现、近期交锋频次），通常能更清晰捕捉到趋势。建议结合页面中的筛选维度，自行建立临时对照表，适合赛前简报场景。</p>
+                <p><strong>▶ 信息更新与标注逻辑</strong><br>
+                信息流按阶段与项目分类，标注参考了公开数据源与周期性统计。页面本身作为查询与对照的起点，而非最终分析结论，建议结合更详尽的专项报告使用。</p>
+                <p><strong>▶ 专题页面适合哪些用户？</strong><br>
+                需要频繁查阅赛事列表、做快速横向对比的日常关注者，以及需要信息聚合作为延伸阅读起点的分析向用户。精简的卡片结构和分类索引能减少信息噪音。</p>
+            </div>
+            <p style="margin-top: 1.2rem;">如需开始查询或浏览当前信息板块，可直接通过 <a href="https://zhm-leyu.com.cn">乐鱼体育</a> 进入索引主页，使用页面内的筛选与分类模块做定向查阅。</p>
+        </div>
+
+        <!-- 页尾访问提示：自然嵌入链接 -->
+        <div class="footer-note">
+            <p>本专题围绕索引、对照与延伸阅读展开。若需获取最新分类信息或赛事存档，建议将 <a href="https://zhm-leyu.com.cn">乐鱼体育</a> 作为日常查询的起点之一，结合自身关注的项目做定向筛选。</p>
+            <p style="font-size: 0.92rem; color: #4b637a;">页面结构以信息密度优先，适合作为赛前参考与赛后对照的辅助工具。</p>
+        </div>
+
+        <div class="footer-legal">
+            <span>专题页 · 信息梳理 · 仅供参考</span>
+        </div>
+    </div>
+
+</body>
+</html>
