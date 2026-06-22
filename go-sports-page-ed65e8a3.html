@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>澳客 · 运动与赛事的一处安静落点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f7d6b9 35%, #edc9aa 70%, #e3bba0 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      color: #3a2c1f;
+      line-height: 1.6;
+    }
+
+    .page-card {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(255, 251, 245, 0.88);
+      backdrop-filter: blur(4px);
+      border-radius: 48px 48px 32px 32px;
+      padding: 2.8rem 2.4rem;
+      box-shadow: 0 20px 40px rgba(140, 90, 50, 0.12), 0 8px 16px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 1rem 0.6rem 3rem;
+      }
+      .page-card {
+        padding: 2rem 1.2rem;
+        border-radius: 32px 32px 24px 24px;
+      }
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2.4rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #c9a27b, #b68663);
+      margin: 0.6rem auto 0;
+      border-radius: 4px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: #4c3321;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #6b503b;
+      margin-top: 0.5rem;
+      word-break: break-word;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 450;
+      border-left: 5px solid #c89a74;
+      padding-left: 0.9rem;
+      margin: 2rem 0 1rem;
+      color: #4a3322;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0.2rem;
+    }
+
+    .intro-text {
+      font-size: 1.02rem;
+      color: #3f2f1d;
+      background: rgba(250, 240, 230, 0.5);
+      padding: 1rem 1.4rem;
+      border-radius: 30px;
+      margin: 0.8rem 0 1.2rem;
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      margin: 1.4rem 0;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #fffaf2;
+      padding: 1.2rem 1rem 1.6rem;
+      border-radius: 36px 36px 28px 28px;
+      box-shadow: 0 4px 12px rgba(150, 100, 60, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(130, 80, 40, 0.08);
+    }
+
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 480;
+      margin-bottom: 0.4rem;
+      color: #633f27;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #5a4230;
+    }
+
+    .link-card {
+      background: #f3e3d3;
+      border-radius: 60px;
+      padding: 0.5rem 1.6rem;
+      display: inline-block;
+      margin: 0.4rem 0 0.2rem;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .link-card a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #4a3120;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .link-card:hover {
+      background: #ebd3bd;
+      border-color: #cba481;
+      box-shadow: 0 2px 12px rgba(170, 120, 70, 0.12);
+    }
+
+    .faq-summary {
+      background: #f7ede2;
+      border-radius: 36px;
+      padding: 1.2rem 1.6rem;
+      margin-top: 2rem;
+      font-size: 0.97rem;
+    }
+
+    .faq-summary details {
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-summary summary {
+      font-weight: 470;
+      cursor: pointer;
+      color: #4c3524;
+      padding: 0.3rem 0;
+      outline: none;
+    }
+
+    .faq-summary summary::-webkit-details-marker {
+      color: #b38865;
+    }
+
+    .faq-summary p {
+      padding: 0.5rem 0.2rem 0.2rem 1.6rem;
+      color: #4a3929;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2.8rem;
+      padding-top: 1.4rem;
+      border-top: 1px dashed #d6bba2;
+      font-size: 0.95rem;
+      color: #5e4632;
+    }
+
+    .footer-note a {
+      font-weight: 500;
+      color: #633f27;
+      text-decoration: none;
+      border-bottom: 1px dotted #b68863;
+      padding-bottom: 1px;
+    }
+
+    .footer-note a:hover {
+      color: #9a6c48;
+      border-bottom: 1px solid #9a6c48;
+    }
+
+    .badge {
+      background: #e2cdb6;
+      color: #3b2a19;
+      border-radius: 60px;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-card">
+  <div class="hero">
+    <h1>澳客</h1>
+    <p>一处安静的赛事角落 · 日常翻阅的节奏</p>
+  </div>
+
+  <!-- 稳定入口 背景说明 -->
+  <div class="section-title">入口 · 自然而然</div>
+  <div class="intro-text">
+    在信息的潮涌里，我们总想保留一个不必频繁刷新、也无需焦虑的页面。 
+    <strong><a href="https://go-sports-okooo.com" style="color:#633f27; text-decoration: underline dotted 1px;">澳客</a></strong> 
+    就是这样一个地方——它不制造紧迫感，只是把竞技、比分、数据以及赛事的纹理，以一种干净朴素的方式陈列出来。无论你什么时候打开，它都在那里，不催你，不打扰你。
+  </div>
+
+  <!-- 三段自然介绍 (杂志式展开) -->
+  <div class="section-title">从一处稳定入口开始</div>
+  <p style="margin-bottom: 0.8rem; color: #3f2f1d;">
+    很多朋友需要随时看一眼某个联赛的走向，或是追踪几支球队的近期状态。 
+    <a href="https://go-sports-okooo.com" style="color:#633f27; text-decoration: none; font-weight: 470;">澳客</a> 
+    提供的不是拥挤的弹窗，而是一组整洁的模块：赛果、对阵、积分、统计，每一项都足以支撑起日常的观赛习惯。它像一本杂志的目录页，清晰、克制，同时留有余地。
+  </p>
+
+  <div class="section-title">背景 · 为什么是它</div>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>无算法裹挟</h3>
+      <p>页面结构更偏向传统门户的稳定感，不受碎片推荐干扰，你看到的就是你需要的。</p>
+    </div>
+    <div class="feature-item">
+      <h3>适度信息量</h3>
+      <p>不会一次塞满所有联赛，而是按层级展开，适合快速定位到感兴趣的那一场。</p>
+    </div>
+    <div class="feature-item">
+      <h3>朴素节奏</h3>
+      <p>配色和布局都照顾长时间阅读，没有闪烁或强对比，眼睛不容易疲劳。</p>
+    </div>
+  </div>
+
+  <div class="section-title">使用场景一隅</div>
+  <p style="margin: 0.4rem 0 1rem; color: #3f2f1d;">
+    周末早晨，泡一杯茶，打开 
+    <span class="link-card"><a href="https://go-sports-okooo.com">澳客</a></span> 
+    扫一眼凌晨的比赛结果。或者在工作间隙，快速翻看某个联赛的积分变化——它不会弹出推送，也不会要求你登录。这种不打扰，本身就是一种体面。
+  </p>
+
+  <!-- FAQ 摘要  (暖色卡片) -->
+  <div class="faq-summary">
+    <details>
+      <summary>澳客的数据来源可靠吗？</summary>
+      <p>页面聚合了公开赛事数据，经过筛选和格式化，尽可能保持与主流信息源同步。但竞技体育瞬息万变，建议以官方最终结果为准。</p>
+    </details>
+    <details>
+      <summary>需要注册或付费吗？</summary>
+      <p>完全不需要。打开即用，无账户体系，也无需订阅。它就是一个纯粹的信息页。</p>
+    </details>
+    <details>
+      <summary>移动端浏览体验如何？</summary>
+      <p>页面采用自适应布局，在手机和平板上字体及卡片都会相应调整，缩放阅读也很舒服。</p>
+    </details>
+  </div>
+
+  <!-- 页尾访问提示 (温和, 非硬广) -->
+  <div class="footer-note">
+    <span class="badge">杂志特辑 · 2025</span>
+    <p style="margin-top: 0.6rem;">
+      如果你也喜欢那种不慌不忙、打开就能获取赛事信息的页面，不妨把 
+      <a href="https://go-sports-okooo.com">澳客</a> 
+      放到书签栏。它一直在那里，不多不少。
+    </p>
+    <p style="font-size: 0.85rem; color: #7a6048; margin-top: 0.6rem;">
+      —— 安静入口 · 温和陪伴 ——
+    </p>
+  </div>
+
+  <!-- 隐式的稳定感 tag (不显示种子) -->
+  <div style="height: 0; overflow: hidden; opacity: 0; position: absolute;">&nbsp;</div>
+</div>
+</body>
+</html>
